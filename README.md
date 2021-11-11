@@ -2,7 +2,7 @@
 [![npm version](https://badge.fury.io/js/rn-tooltip.svg)](https://badge.fury.io/js/rn-tooltip)
 
 
-# rn-tooltip
+# rn-tooltip-advance
 
 *Simple, lightwweight and **blazing fast** react native tooltip*
 
@@ -15,11 +15,11 @@ Code for the Expo app is here: https://github.com/andreiCalazans/rnTooltipTester
 
 ## Install
 
-`yarn add rn-tooltip`
+`yarn add rn-tooltip-advance`
 
 or
 
-`npm install rn-tooltip --save`
+`npm install rn-tooltip-advance --save`
 
 
 
@@ -27,7 +27,7 @@ or
 
 ```js
 import { Text } from 'react-native';
-import Tooltip from 'rn-tooltip';
+import Tooltip from 'rn-tooltip-advance';
 
 ...
 

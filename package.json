@@ -1,11 +1,11 @@
 {
-  "name": "rn-tooltip",
+  "name": "rn-tooltip-advance",
   "version": "1.0.0",
   "main": "src/Tooltip.js",
-  "homepage": "https://github.com/Edfora/rn-tooltip#readme",
+  "homepage": "https://github.com/Edfora/rn-tooltip-advance#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Edfora/rn-tooltip"
+    "url": "git+https://github.com/Edfora/rn-tooltip-advance"
   },
   "author": "Edfora <mobileapp@mypat.in>",
   "license": "MIT",
