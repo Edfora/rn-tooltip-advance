@@ -1,5 +1,5 @@
 
-[![npm version](https://badge.fury.io/js/rn-tooltip.svg)](https://badge.fury.io/js/rn-tooltip)
+[![npm version](https://badge.fury.io/js/rn-tooltip-advance.svg)](https://badge.fury.io/js/rn-tooltip-advance)
 
 
 # rn-tooltip-advance
