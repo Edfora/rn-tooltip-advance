@@ -28,7 +28,7 @@ type Coord = {
   The tooltip coordinates are based on the element which it is wrapping.
   We take the x and y coordinates of the element and find the best position
   to place the tooltip. To find the best position we look for the side with the
-  most space. In order to find the side with the most space we divide the the 
+  most space. In order to find the side with the most space we divide the the
   surroundings in four quadrants and check for the one with biggest area.
   Once we know the quandrant with the biggest area it place the tooltip in that
   direction.
@@ -50,6 +50,7 @@ const getTooltipCoordinate = (
   receivedTooltipWidth: number | string,
   receivedTooltipHeight: number | string,
   withPointer: boolean,
+  tooltipPosition: number = -1
 ): Coord => {
   const screenDims = Dimensions.get('screen');
 
@@ -81,13 +82,14 @@ const getTooltipCoordinate = (
   };
 
   const areas: Areas[] = [
-    getArea(vOne, vFour),
-    getArea(vOne, vTwo),
-    getArea(vTwo, vThree),
-    getArea(vThree, vFour),
+    getArea(vOne, vFour), // TOP_LEFT => tooltipPosition = 0
+    getArea(vOne, vTwo), // TOP_RIGHT => tooltipPosition = 1
+    getArea(vTwo, vThree), // BOTTOM_RIGHT => tooltipPosition = 2
+    getArea(vThree, vFour), // BOTTOM_LEFT => tooltipPosition = 3
   ].map((each, index) => ({ area: each, id: index }));
 
-  const sortedArea = areas.sort((a, b) => b.area - a.area);
+  const sortedArea = (tooltipPosition === -1) ? areas.sort((a, b) => b.area - a.area) : [ areas[tooltipPosition] ];
+  // const sortedArea = areas.sort((a, b) => b.area - a.area);
 
   // deslocated points
   const dX = 0.001;

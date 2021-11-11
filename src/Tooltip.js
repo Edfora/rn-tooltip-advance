@@ -38,6 +38,7 @@ type Props = {
   backgroundColor: string,
   highlightColor: string,
   toggleWrapperProps: {},
+  tooltipPosition: number
 };
 
 class Tooltip extends React.Component<Props, State> {
@@ -87,6 +88,7 @@ class Tooltip extends React.Component<Props, State> {
       width,
       withPointer,
       containerStyle,
+      tooltipPosition = -1
     } = this.props;
 
     const { x, y } = getTooltipCoordinate(
@@ -99,6 +101,7 @@ class Tooltip extends React.Component<Props, State> {
       width,
       height,
       withPointer,
+      tooltipPosition
     );
 
     return {
@@ -147,6 +150,7 @@ class Tooltip extends React.Component<Props, State> {
 
     const { yOffset, xOffset, elementWidth, elementHeight } = this.state;
     const tooltipStyle = this.getTooltipStyle();
+
     return (
       <View>
         <View
@@ -231,6 +235,7 @@ Tooltip.propTypes = {
   overlayColor: PropTypes.string,
   backgroundColor: PropTypes.string,
   highlightColor: PropTypes.string,
+  tooltipPosition: PropTypes.number
 };
 
 Tooltip.defaultProps = {
@@ -245,6 +250,7 @@ Tooltip.defaultProps = {
   backgroundColor: '#617080',
   onClose: () => {},
   onOpen: () => {},
+  tooltipPosition: -1
 };
 
 const styles = {
