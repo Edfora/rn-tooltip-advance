@@ -1,13 +1,13 @@
 {
   "name": "rn-tooltip",
-  "version": "1.3.0",
+  "version": "1.0.0",
   "main": "src/Tooltip.js",
-  "homepage": "https://github.com/AndreiCalazans/rn-tooltip#readme",
+  "homepage": "https://github.com/Edfora/rn-tooltip#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AndreiCalazans/rn-tooltip"
+    "url": "git+https://github.com/Edfora/rn-tooltip"
   },
-  "author": "AndreiCalazans <andreixoc@hotmail.com>",
+  "author": "Edfora <mobileapp@mypat.in>",
   "license": "MIT",
   "scripts": {
     "check:commit": "yarn flow && npm run test && lint-staged",

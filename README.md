@@ -52,6 +52,7 @@ import Tooltip from 'rn-tooltip';
 * [`overlayColor`](#withOverlay)
 * [`withPointer`](#withPointer)
 * [`toggleWrapperProps`](#toggleWrapperProps)
+* [`tooltipPosition`](#tooltipPosition)
 
 ---
 
@@ -191,6 +192,19 @@ Drills TouchableOpacity Props down to the TouchableOpacity wrapper that toggles 
 |      Type      |      Default      |
 | :------------: | :---------------: |
 | TouchableOpacityProps | {} |
+
+### `tooltipPosition`
+
+Manually set tooltip position for rendering the tooltip w.r.t. content. Possible values include:
+-1 => AUTO
+0 => TOP LEFT
+1 => TOP RIGHT
+2 => BOTTOM RIGHT
+3 => BOTTOM LEFT
+
+|   Type   | Default |
+| :------: | :-----: |
+|  number  |   -1    |
 
 
 **MIT Licensed**
