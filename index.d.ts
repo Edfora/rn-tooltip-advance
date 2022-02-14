@@ -17,6 +17,7 @@ type Props = {
   highlightColor?: string,
   toggleWrapperProps?: TouchableOpacityProps,
   tooltipPosition?: number
+  useAsDropDownView?: boolean
 };
 
 export default class Tooltip extends React.Component<Props, any> {

@@ -38,7 +38,8 @@ type Props = {
   backgroundColor: string,
   highlightColor: string,
   toggleWrapperProps: {},
-  tooltipPosition: number
+  tooltipPosition: number,
+  useAsDropDownView?: boolean
 };
 
 class Tooltip extends React.Component<Props, State> {
@@ -143,7 +144,7 @@ class Tooltip extends React.Component<Props, State> {
     );
   };
   renderContent = withTooltip => {
-    const { popover, withPointer, toggleOnPress, highlightColor } = this.props;
+    const { popover, withPointer, toggleOnPress, highlightColor, useAsDropDownView } = this.props;
 
     if (!withTooltip)
       return this.wrapWithPress(toggleOnPress, this.props.children);
@@ -151,8 +152,17 @@ class Tooltip extends React.Component<Props, State> {
     const { yOffset, xOffset, elementWidth, elementHeight } = this.state;
     const tooltipStyle = this.getTooltipStyle();
 
+    let popoverView = (<View style={tooltipStyle}>{popover}</View>)
+
+    if(useAsDropDownView) {
+      popoverView = (<TouchableOpacity
+      style={tooltipStyle}
+      activeOpacity = {1}
+      >{popover}</TouchableOpacity>)
+    }
+
     return (
-      <View>
+      <View >
         <View
           style={{
             position: 'absolute',
@@ -162,12 +172,13 @@ class Tooltip extends React.Component<Props, State> {
             overflow: 'visible',
             width: elementWidth,
             height: elementHeight,
+
           }}
         >
           {this.props.children}
         </View>
         {withPointer && this.renderPointer(tooltipStyle.top)}
-        <View style={tooltipStyle}>{popover}</View>
+        {popoverView}
       </View>
     );
   };
@@ -206,9 +217,10 @@ class Tooltip extends React.Component<Props, State> {
           onShow={onOpen}
           onRequestClose={onClose}
         >
+
           <TouchableOpacity
-            style={styles.container(withOverlay, overlayColor)}
-            onPress={this.toggleTooltip}
+            style={[styles.container(withOverlay, overlayColor)]}
+            onPress={this.toggleTooltip} // to do disable this on press event in order to protect from touches
             activeOpacity={1}
           >
             {this.renderContent(true)}
@@ -235,7 +247,8 @@ Tooltip.propTypes = {
   overlayColor: PropTypes.string,
   backgroundColor: PropTypes.string,
   highlightColor: PropTypes.string,
-  tooltipPosition: PropTypes.number
+  tooltipPosition: PropTypes.number,
+  useAsDropDownView: PropTypes.bool,
 };
 
 Tooltip.defaultProps = {
@@ -250,7 +263,8 @@ Tooltip.defaultProps = {
   backgroundColor: '#617080',
   onClose: () => {},
   onOpen: () => {},
-  tooltipPosition: -1
+  tooltipPosition: -1,
+  useAsDropDownView: false
 };
 
 const styles = {
