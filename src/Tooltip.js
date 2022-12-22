@@ -10,6 +10,7 @@ import {
 import PropTypes from 'prop-types';
 
 import Triangle from './Triangle';
+import TraingleBorder from './TraingleBorder';
 import { ScreenWidth, ScreenHeight, isIOS } from './helpers';
 import getTooltipCoordinate from './getTooltipCoordinate';
 
@@ -31,6 +32,7 @@ type Props = {
   width: number | string,
   containerStyle: any,
   pointerColor: string,
+  pointerBorderColor: string,
   onClose: () => void,
   onOpen: () => void,
   withOverlay: boolean,
@@ -132,8 +134,9 @@ class Tooltip extends React.Component<Props, State> {
       <View
         style={{
           position: 'absolute',
-          top: pastMiddleLine ? yOffset - 13 : yOffset + elementHeight - 2,
+          top: pastMiddleLine ? yOffset - 12 : yOffset + elementHeight - 4,
           left: xOffset + elementWidth / 2 - 7.5,
+          zIndex: 2
         }}
       >
         <Triangle
@@ -141,6 +144,27 @@ class Tooltip extends React.Component<Props, State> {
           isDown={pastMiddleLine}
         />
       </View>
+    );
+  };
+  renderPointerBorder = tooltipY => {
+    const { yOffset, xOffset, elementHeight, elementWidth } = this.state;
+    const { backgroundColor, pointerBorderColor } = this.props;
+    const pastMiddleLine = yOffset > tooltipY;
+
+    return (
+      <View
+      style={{
+        position: 'absolute',
+        top: pastMiddleLine ? yOffset - 10 : yOffset + elementHeight - 6,
+        left: xOffset + elementWidth / 2 - 7.5,
+        zIndex: 1
+      }}
+    >
+      <TraingleBorder
+        style={{ borderBottomColor: pointerBorderColor || backgroundColor}}
+        isDown={pastMiddleLine}
+      />
+    </View>
     );
   };
   renderContent = withTooltip => {
@@ -178,6 +202,7 @@ class Tooltip extends React.Component<Props, State> {
           {this.props.children}
         </View>
         {withPointer && this.renderPointer(tooltipStyle.top)}
+        {withPointer && this.renderPointerBorder(tooltipStyle.top)}
         {popoverView}
       </View>
     );
@@ -240,6 +265,7 @@ Tooltip.propTypes = {
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   containerStyle: ViewPropTypes.style,
   pointerColor: PropTypes.string,
+  pointerBorderColor: PropTypes.string,
   onClose: PropTypes.func,
   onOpen: PropTypes.func,
   withOverlay: PropTypes.bool,
