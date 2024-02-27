@@ -19,6 +19,7 @@ type Props = {
   toggleWrapperProps?: TouchableOpacityProps,
   tooltipPosition?: number
   useAsDropDownView?: boolean
+  children?: any
 };
 
 export default class Tooltip extends React.Component<Props, any> {
