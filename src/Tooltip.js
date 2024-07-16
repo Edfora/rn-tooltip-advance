@@ -40,8 +40,9 @@ type Props = {
   backgroundColor: string,
   highlightColor: string,
   toggleWrapperProps: {},
-  tooltipPosition: number,
-  useAsDropDownView?: boolean
+  tooltipPosition: number, 
+  useAsDropDownView?: boolean,
+  toolTipContainerStyle?: ViewStyle
 };
 
 class Tooltip extends React.Component<Props, State> {
@@ -229,10 +230,10 @@ class Tooltip extends React.Component<Props, State> {
 
   render() {
     const { isVisible } = this.state;
-    const { onClose, withOverlay, onOpen, overlayColor } = this.props;
+    const { onClose, withOverlay, onOpen, overlayColor, toolTipContainerStyle } = this.props;
 
     return (
-      <View collapsable={false} ref={e => (this.renderedElement = e)}>
+      <View collapsable={false} style={toolTipContainerStyle} ref={e => (this.renderedElement = e)}>
         {this.renderContent(false)}
         <Modal
           animationType="fade"
