@@ -4,8 +4,7 @@ import * as React from 'react';
 import {
   TouchableOpacity,
   Modal,
-  View,
-  ViewPropTypes as RNViewPropTypes,
+  View
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -13,8 +12,6 @@ import Triangle from './Triangle';
 import TraingleBorder from './TraingleBorder';
 import { ScreenWidth, ScreenHeight, isIOS } from './helpers';
 import getTooltipCoordinate from './getTooltipCoordinate';
-
-const ViewPropTypes = RNViewPropTypes || View.propTypes;
 
 type State = {
   isVisible: boolean,
@@ -264,7 +261,7 @@ Tooltip.propTypes = {
   toggleOnPress: PropTypes.bool,
   height: PropTypes.number,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  containerStyle: ViewPropTypes.style,
+  containerStyle: PropTypes.style,
   pointerColor: PropTypes.string,
   pointerBorderColor: PropTypes.string,
   onClose: PropTypes.func,
