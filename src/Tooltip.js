@@ -239,6 +239,7 @@ class Tooltip extends React.Component<Props, State> {
           onDismiss={onClose}
           onShow={onOpen}
           onRequestClose={onClose}
+          supportedOrientations={['portrait', 'landscape']}
         >
 
           <TouchableOpacity
